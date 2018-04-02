@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tabletop</title>
+   <!--  Google Charts JS Script  -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <div id="chart_div"></div>
+    <!-- Tabletop JS Script -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
+  
+</head>
+<body>
+	<h1 class = "header">  </h1>
+	<p class = "bodytext">  </p>
+
+	
+
+ 
+
+<script type='text/javascript'>    
+  var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1kgVAW2nc7ujac572Ps7u75Ho6aQd5LlEBlSSdDTG90Y/edit?usp=sharing';
+  window.addEventListener('DOMContentLoaded', init);
+
+
+  function init() {
+    Tabletop.init( { key: publicSpreadsheetUrl,
+                     callback: showInfo,
+                     simpleSheet: true } )
+  }
+
+  function showInfo(data, tabletop) {
+    //alert('Successfully processed!');
+
+    data.forEach(function(data){
+      //console.log(data);
+     // document.body.innerHTML+=data.occupation;
+    });
+  }
+  
+  //Google Charts Data starts here
+google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback(drawMultSeries);
+
+function drawMultSeries(data) {
+
+ function showInfo(data, tabletop) {
+    alert('Successfully processed!');
+
+    data.forEach(function(data){
+      console.log(data);
+      document.body.innerHTML+=data.medianWeeklyEarningsWomen;
+    });
+  }
+
+      var data = google.visualization.arrayToDataTable([
+        ['occupation', 'medianWeeklyEarningsMen', 'medianWeeklyEarningsWomen'],
+        ['New York City, NY', .81, .60],
+        ['Los Angeles, CA', .81, .60],
+        ['Chicago, IL', .81, .60],
+        ['Houston, TX', .81, .60],
+        ['Philadelphia, PA', .81, .60]
+      ]);
+
+      var options = {
+        title: 'Population of Largest U.S. Cities',
+        chartArea: {width: '50%'},
+        hAxis: {
+          title: 'Total Population',
+          minValue: 0
+        },
+        vAxis: {
+          title: 'City'
+        }
+      };
+
+      var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+    }
+
+// End Google chart data
+// data source: https://www.bls.gov/opub/ted/2018/median-weekly-earnings-of-women-770-in-2017.htm 
+// Citation: Bureau of Labor Statistics, U.S. Department of Labor, The Economics Daily, Median weekly earnings of women $770 in 2017 on the Internet at https://www.bls.gov/opub/ted/2018/median-weekly-earnings-of-women-770-in-2017.htm (visited April 01, 2018). 
+// https://www.bls.gov/cps/tables.htm
+
+
+</script>
+
+
+</body>
+</html>
