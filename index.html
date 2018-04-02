@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tabletop</title>
+</head>
+<body>
+	<h1 class = "header">  </h1>
+	<p class = "bodytext">  </p>
+
+
+
+	
+<script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
+<script type='text/javascript'>    
+  var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1-qOZrzbu4qUoAn4p7XkE787icXuD0PwJ1a54tdYzU8U/edit?usp=sharing';
+
+  function init() {
+    Tabletop.init( { key: publicSpreadsheetUrl,
+                     callback: showInfo,
+                     simpleSheet: true } )
+  }
+
+  function showInfo(data, tabletop) {
+    //alert('Successfully processed!')
+   // console.log(data);
+
+    var header = document.querySelector(".header");
+    var bodytext = document.querySelector(".bodytext");
+
+    data.forEach(function(data){
+    	console.log(data.Company);
+
+    	//var container = document.querySelector(body);
+    	//document.body.innerHTML+=data.Company;
+    	var n = data.Company;
+    	var e = data.Enthusiasm;
+    	var r = data.Rating; 
+
+    	//document.body.innerHTML+= `${n} ${e} ${r} | `;
+    	header.innerHTML += n;
+    	bodytext.innerHTML += e;
+
+    	//document.write(data.Company);
+
+    });
+
+    /* my attempted foreach statement
+    var response =JSON.parse(data.object);
+    output.forEach(function(){
+    	
+    }) */
+};
+
+
+  window.addEventListener('DOMContentLoaded', init);
+</script>
+
+
+</body>
+</html>
