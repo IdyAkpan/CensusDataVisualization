@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Tabletop</title>
+	<title>US Census Visualization</title>
    <!--  Google Charts JS Script  -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <div id="chart_div"></div>
-    <!-- Tabletop JS Script -->
+    <div id="chart_div2"></div>
+    
+    <!-- Tabletop JS Script; Tabletop enables Google charts to update via Google spreadsheets-->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
   
 </head>
@@ -18,6 +20,7 @@
  
 
 <script type='text/javascript'>    
+     // Tabletop JS Script; Tabletop enables Google charts to update via Google spreadsheets
   var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1kgVAW2nc7ujac572Ps7u75Ho6aQd5LlEBlSSdDTG90Y/edit?usp=sharing';
   window.addEventListener('DOMContentLoaded', init);
 
@@ -29,37 +32,45 @@
   }
 
   function showInfo(data, tabletop) {
-    //alert('Successfully processed!');
+    alert('Successfully processed!');
 
     data.forEach(function(data){
       //console.log(data);
      // document.body.innerHTML+=data.occupation;
+
+     var a = data.occupation;
+     var b = data.medianWeeklyEarningsMen;
+     var c = data.medianWeeklyEarningsWomen;
+
+     //console.log(data);
+     pushToDOM(data);
+
     });
   }
   
   //Google Charts Data starts here
 google.charts.load('current', {packages: ['corechart', 'bar']});
-google.charts.setOnLoadCallback(drawMultSeries);
+// google.charts.setOnLoadCallback(drawMultSeries);
+google.charts.setOnLoadCallback(pushToDOM);
 
-function drawMultSeries(data) {
 
- function showInfo(data, tabletop) {
-    alert('Successfully processed!');
+//attempt to connect Google sheets data to Google charts
+function pushToDOM(data){
+ data.forEach(function(data){
 
-    data.forEach(function(data){
-      console.log(data);
-      document.body.innerHTML+=data.medianWeeklyEarningsWomen;
-    });
-  }
+     var a = data.occupation;
+     var b = data.medianWeeklyEarningsMen;
+     var c = data.medianWeeklyEarningsWomen;
+console.log(a);
 
-      var data = google.visualization.arrayToDataTable([
-        ['occupation', 'medianWeeklyEarningsMen', 'medianWeeklyEarningsWomen'],
-        ['New York City, NY', .81, .60],
-        ['Los Angeles, CA', .81, .60],
-        ['Chicago, IL', .81, .60],
-        ['Houston, TX', .81, .60],
-        ['Philadelphia, PA', .81, .60]
-      ]);
+});
+
+
+
+// function drawMultSeries(data) {
+
+
+      var data = new google.visualization.DataTable(pushToDOM);
 
       var options = {
         title: 'Population of Largest U.S. Cities',
@@ -75,7 +86,9 @@ function drawMultSeries(data) {
 
       var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
       chart.draw(data, options);
-    }
+    
+
+   } 
 
 // End Google chart data
 // data source: https://www.bls.gov/opub/ted/2018/median-weekly-earnings-of-women-770-in-2017.htm 
