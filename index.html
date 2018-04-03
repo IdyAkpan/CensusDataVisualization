@@ -1,60 +1,119 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Tabletop</title>
-</head>
-<body>
-	<h1 class = "header">  </h1>
-	<p class = "bodytext">  </p>
-
-
-
+	<title>2017 Earnings by Sex & Occupation</title>
+	<link rel='stylesheet' href='main.css'>
 	
-<script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
-<script type='text/javascript'>    
-  var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1-qOZrzbu4qUoAn4p7XkE787icXuD0PwJ1a54tdYzU8U/edit?usp=sharing';
+	<!--  Google Charts JS Script  -->
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-  function init() {
-    Tabletop.init( { key: publicSpreadsheetUrl,
-                     callback: showInfo,
-                     simpleSheet: true } )
-  }
+</head>
 
-  function showInfo(data, tabletop) {
-    //alert('Successfully processed!')
-   // console.log(data);
+<body>
+	<h1> Gender Pay Inequality & Work in America </h1>
+	<h3> The United States, like many countries in the world, has a gender problem. It can't seem to figure out how to pay its women workers the same as its men. According to the Pew Research Center, the gap is narrowing; it's gone from $0.64 in 1980 to $0.83 in 2017*. However, I was curious to see how this varied by field. If everyone completed this course and became a software engineer, there would be a $1: $0.86 discrepancy in pay, simply due to gender. This is on par with the discrepancy for bartenders and even maids/house cleaners (a women dominated field). Fascinating, huh? <br>
+	Construction appears to be a surprisingly equitable playing field with women making $1.01 for every male dollar, as are nursing and counseling fields. </h3>
+	<div id="chart_div"></div>
+	<div id= "box2">
+		<h5>  
+			Source: http://www.pewresearch.org/fact-tank/2017/04/03/gender-pay-gap-facts/ <br>
+			Source: Bureau of Labor Statistics, U.S. Department of Labor, The Economics Daily, Median weekly earnings of women $770 in 2017 on the Internet at https://www.bls.gov/opub/ted/2018/median-weekly-earnings-of-women-770-in-2017.htm (visited April 01, 2018). <br>
+			
+		Also see: https://www.bls.gov/cps/tables.htm, for more information/data.</h5>
 
-    var header = document.querySelector(".header");
-    var bodytext = document.querySelector(".bodytext");
+		<h5>
+			Some roles did not have enough data on women in the industry to be shown in this chart. You can find them below:<br></h5>
+			<p> Architectural and engineering managers | $2020<br>
+				Aerospace engineers | $1891<br>
+				Computer hardware engineers | $1793<br>
+				Information security analysts | $1773<br>
+				Electrical and electronics engineers | $1772<br>
+				Aircraft pilots and flight engineers | $1750<br>
+				Environmental scientists and geoscientists | $1746<br>
+				Database administrators | $1745<br>
+				Producers and directors | $1708<br>
+				Computer network architects | $1659<br>
+				Architects, except naval | $1650<br>
+				Chemical engineers | $1631<br>
+				Mechanical engineers | $1533<br>
+				Industrial engineers, including health and safety | $1520<br>
+				Chemists and materials scientists | $1451<br>
+				Network and computer systems administrators | $1396<br>
+				Logisticians | $1358<br>
+				First-line supervisors of police and detectives | $1347<br>
+				Web developers | $1342<br>
+				Detectives and criminal investigators | $1291<br>
+				Electrical power-line installers and repairers | $1191<br>
+				Aircraft mechanics and service technicians | $1175<br>
+				First-line supervisors of construction trades and extraction workers | $1166<br>
+				Broadcast and sound engineering technicians and radio operators | $1160<br>
+				Cost estimators | $1157<br>
+				Drafters | $1149<br>
+				Stationary engineers and boiler operators | $1142<br>
+				Firefighters | $1136<br>
+				Surveying and mapping technicians | $1114<br>
+				First-line supervisors of mechanics, installers, and repairers | $1089<br>
+				Clergy | $1073<br>
+				Radio and telecommunications equipment installers and repairers | $1069<br>
+				Construction and building inspectors | $1068<br>
+				Transportation, storage, and distribution managers | $1061<br>
+				Athletes, coaches, umpires, and related workers | $1031<br>
+				Tool and die makers | $1021<br>
+				Heavy vehicle and mobile equipment service technicians and mechanics | $1005<br>
+				Electricians | $974<br>
+				Farmers, ranchers, and other agricultural managers | $963<br>
+				Security and fire alarm systems installers | $943<br>
+				First-line supervisors of protective service workers, all other | $938<br>
+				Industrial and refractory machinery mechanics | $932<br>
+				Supervisors of transportation and material moving workers | $919<br>
+				Computer control programmers and operators | $912<br>
+				Water and wastewater treatment plant and system operators | $910<br>
+				Other extraction workers | $907<br>
+				Crane and tower operators | $898<br>
+				Bus and truck mechanics and diesel engine specialists | $887<br>
+				Chemical processing machine setters, operators, and tenders | $879<br>
+				Telecommunications line installers and repairers | $876<br>
+				Operating engineers and other construction equipment operators | $868<br>
+				Sheet metal workers | $866<br>
+				Pipelayers, plumbers, pipefitters, and steamfitters | $865<br>
+				Maintenance and repair workers, general | $834<br>
+				Machinists | $834<br>
+				Computer, automated teller, and office machine repairers | $833<br>
+				Automotive body and related repairers | $832<br>
+				Heating, air conditioning, and refrigeration mechanics and installers | $832<br>
+				Welding, soldering, and brazing workers | $821<br>
+				Parts salespersons | $800<br>
+				Crushing, grinding, polishing, mixing, and blending workers | $795<br>
+				Carpenters | $789<br>
+				Printing press operators | $789<br>
+				Brickmasons, blockmasons, and stonemasons | $787<br>
+				Other installation, maintenance, and repair workers | $772<br>
+				Highway maintenance workers | $770<br>
+				Automotive service technicians and mechanics | $764<br>
+				First-line supervisors of landscaping, lawn service, and groundskeeping workers | $760<br>
+				Couriers and messengers | $751<br>
+				Painting workers | $705<br>
+				Painters, construction and maintenance | $689<br>
+				Cutting, punching, and press machine setters, operators, and tenders, metal and plastic | $688<br>
+				Construction laborers | $667<br>
+				Industrial truck and tractor operators | $632<br>
+				Carpet, floor, and tile installers and finishers | $628<br>
+				Drywall installers, ceiling tile installers, and tapers | $628<br>
+				Helpers, construction trades | $627<br>
+				Roofers | $621<br>
+				Pest control workers | $617<br>
+				Miscellaneous vehicle and mobile equipment mechanics, installers, and repairers | $613<br>
+				Baggage porters, bellhops, and concierges | $543<br>
+				Automotive and watercraft service attendants | $535<br>
+				Cleaners of vehicles and equipment | $531<br>
+				Grounds maintenance workers | $526<br>
+				Dishwashers | $408<br>
+			</p>
+		</div>
 
-    data.forEach(function(data){
-    	console.log(data.Company);
-
-    	//var container = document.querySelector(body);
-    	//document.body.innerHTML+=data.Company;
-    	var n = data.Company;
-    	var e = data.Enthusiasm;
-    	var r = data.Rating; 
-
-    	//document.body.innerHTML+= `${n} ${e} ${r} | `;
-    	header.innerHTML += n;
-    	bodytext.innerHTML += e;
-
-    	//document.write(data.Company);
-
-    });
-
-    /* my attempted foreach statement
-    var response =JSON.parse(data.object);
-    output.forEach(function(){
-    	
-    }) */
-};
+		<script src="main.js"></script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
 
 
-  window.addEventListener('DOMContentLoaded', init);
-</script>
-
-
-</body>
-</html>
+	</body>
+	</html>

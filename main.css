@@ -1,0 +1,18 @@
+
+	#chart_div{
+		height: 10000px;
+		width: auto;
+	}
+
+	*{
+		font-family: Arial;
+	}
+
+	#box2{
+		padding-top: 60px;
+		color: #6f7f90;
+	}
+	p{
+
+		font-size: 15px;
+	}
